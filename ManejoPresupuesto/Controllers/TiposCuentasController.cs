@@ -13,6 +13,7 @@ namespace ManejoPresupuesto.Controllers
         [HttpPost]
         public IActionResult Crear(TipoCuenta tipoCuenta)
         {
+            // Siempre validar, ya que el front no hay control, a pesar de utilizar jquery
             if (!ModelState.IsValid)
             {
                 return View(tipoCuenta);
