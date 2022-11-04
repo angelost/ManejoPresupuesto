@@ -27,10 +27,10 @@ namespace ManejoPresupuesto.Servicios
         public async Task Crear(TipoCuenta tipoCuenta)
         {
             using var connection = new SqlConnection(connectionString);
-            var id = await connection.QuerySingleAsync<int>(@"INSERT INTO TipoCuentas (Nombre, UsuarioId, Orden)
-                                                              VALUES (@Nombre, @UsuarioId, 0);
-                                                              SELECT SCOPE_IDENTITY();", tipoCuenta);
-                                                               
+            var id = await connection.QuerySingleAsync<int>
+                                                ("TipoCuentas_Insertar",
+                                                new { usuarioId = tipoCuenta.UsuarioId, nombre = tipoCuenta.Nombre },
+                                                commandType: System.Data.CommandType.StoredProcedure);
             tipoCuenta.Id = id;
         }
 
