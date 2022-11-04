@@ -123,5 +123,11 @@ namespace ManejoPresupuesto.Controllers
             await repositorioTiposCuentas.Borrar(id);
             return RedirectToAction("Index");
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Ordenar([FromBody] int[] ids)
+        {
+            return Ok();
+        }
     }
 }
