@@ -15,7 +15,14 @@ namespace ManejoPresupuesto.Controllers
             this.repositorioCategorias = repositorioCategorias;
             this.servicioUsuarios = servicioUsuarios;
         }
-                
+
+        public async Task<IActionResult> Index()
+        {
+            var usuarioId = servicioUsuarios.ObtenerUsuarioId();
+            var categorias = await repositorioCategorias.Obtener(usuarioId);
+            return View(categorias);
+        }
+
         [HttpGet]
         public IActionResult Crear()
         {
