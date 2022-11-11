@@ -52,7 +52,7 @@ namespace ManejoPresupuesto.Servicios
             // Nota del profesor: Aquí hay un error que corrijo más adelante. 
             // En vez de tc.Id (en el SELECT), debe ser TipoCuentaId
             return await connection.QueryFirstOrDefaultAsync<Cuenta>(
-                @"SELECT Cuentas.Id, Cuentas.Nombre, Balance, Descripcion, tc.Id
+                @"SELECT Cuentas.Id, Cuentas.Nombre, Balance, Descripcion, TipoCuentaId
                 FROM Cuentas
                 INNER JOIN TipoCuentas tc
                 ON tc.Id = Cuentas.TipoCuentaId
